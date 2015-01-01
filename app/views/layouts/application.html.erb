@@ -17,31 +17,57 @@
 
 		<ul>
 			<li class="category">website</li>
-			<li><%= link_to "Blog", root_path %></li>
-			<li>about</li>
+			<li><%= link_to 'blog', root_path %></li>
+			<li><%= link_to 'about', about_path %></li>
 		</ul>
 
 		<ul>
 			<li class="category">social</li>
-			<li><a href="www.twitter.com/justinebreuch">twitter</a></li>
-			<li><a href="www.instagram.com/jbreuch">instagram</a></li>
-			<li><a href="www.google.com">github</a></li>
-			<li><a href="mailto:justine.breuch@gmail.com">email</a></li>
+			<li>
+				<%= image_tag "twitter_logo.png", class: "social_icon", width: '15px'%>
+				<a href="https://twitter.com/justinebreuch">twitter
+				</a>
+			</li>
+			<li>
+				<%= image_tag "instagram_logo.png", class: "social_icon", width: '12px' %>
+				<a href="http://instagram.com/justine_breuch/">instagram
+				</a>
+			</li>
+			<li>
+				<%= image_tag "github_logo.png", class: "social_icon", width: '12px' %>
+				<a href="https://github.com/justinebreuch">github
+				</a>
+			</li>
+			<li>
+				<%= image_tag "email_logo.png", width: '13px', height: '9px' %>
+				<a href="mailto:justine.breuch@gmail.com">email
+				</a>
+			</li>
 		</ul>
-		<p class="sign_in">admin login</p>
+		<% if !user_signed_in? %>
+			<p class="sign_in">admin login</p>
+		<% end %>
 	</div>
 
 	<div id="main_content">
 			<div id="header">
+			<% if current_page?(root_path) %> 
 				<p>all posts</p>
-				<div class="buttons">
-					<button class="button"><%= link_to "new post", new_post_path %>
-						
-					</button>
-					<button class="button">
-						log out
-					</button>
-				</div>
+			<% elsif current_page?(about_path) %>
+				<p>about</p>
+			<% else %>
+				<%= link_to "back to all posts", root_path %>
+				<% end %>
+				<% if user_signed_in? %>
+					<div class="buttons">
+						<button class="button"><%= link_to "new post", new_post_path %>
+							
+						</button>
+						<button class="button">
+							log out
+						</button>
+					</div>
+				<% end %>
 			</div>
 	
 	<% flash.each do |name, msg| %>
