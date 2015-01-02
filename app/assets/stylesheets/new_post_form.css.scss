@@ -1,0 +1,39 @@
+div.main_content.new_post div#page_wrapper h1 {
+	color: rgb(231, 180, 100);
+}
+
+div#page_wrapper {
+	margin: 0 auto;
+	width:1000px;
+}
+
+form#new_post.new_post {
+	margin-top:20px;
+}
+
+
+.text_field{
+	border: none;
+	background-color: rgb(86, 86, 86);
+	opacity: .7;
+}
+
+.submit.btn.button {
+	margin-top:20px;
+	color:white;
+	border: 2px outset buttonface;
+	border-radius:.3em;
+}
+
+.form_label {
+	color:#33acb7;
+	font-family: 'Helvetica Neue';
+	font-weight: 100;
+	letter-spacing: .1em;
+	font-size: 1.1em;
+
+}
+
+p#body {
+		margin-top:40px;
+	}

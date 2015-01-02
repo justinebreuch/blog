@@ -15,10 +15,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     
 <!-- background_image -->
-<div>
+<div class="background_image">
 	<% if current_page?(root_path) %>
 		<%= image_tag("background_20.jpg", class: "background home") %>
-		<h3 id="wecome_message">hello. welcome, and please, stay a while.</h3>
+		<h3 id="welcome_message">hello. welcome, and please, stay a while.</h3>
 	<% else %>
 		<%= image_tag("background_10.jpg", class: "background new_post") %>
 	<% end %>
@@ -120,7 +120,6 @@
 <% elsif current_page?(new_post_path) %>
 	<div class="main_content new_post">
 			
-
 			<div id="header">
 				<ul class="user_options">
 				<% if user_signed_in? %>
