@@ -3,6 +3,13 @@
 html, body {
   font-family: 'Helvetica Neue', sans-serif;
   font-weight:200;
+  padding-top: 3em;
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -10,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
 }
 
@@ -42,9 +49,7 @@ a {
       }
       li {
         padding: .5em 0;
-        img.social_icon {
-          height: 12px;
-        }
+        display: inline-block;
         a {
           color: #9eafba;
           text-decoration: none;
@@ -72,7 +77,7 @@ a {
 .button {
   outline: none;
   background: transparent;
-  border: 1px solid #d6dce0;
+  border: 1px solid #9d9d9d;
   padding: .5em 1.5em;
   border-radius: 1.5em;
   &:hover {
@@ -80,8 +85,13 @@ a {
     color: #33acb7;
     a {
       color: #33acb7 !important;
+      text-decoration:none;
     }
   }
+  a {
+    color: #9d9d9d;
+  }
+  
 }
 
 .clearfix:after {
@@ -93,7 +103,7 @@ a {
 }
 
 #main_content {
-  margin-left: 250px;
+  margin-left: 0px;
   #header {
     padding: 1em 3em;
     border-bottom: 1px solid #d6dce0;
@@ -267,5 +277,86 @@ a {
       border: 1px solid #33acb7;
       color: #33acb7;
     }
+  }
+}
+
+/* navbar styling */
+
+div.container.no_margins {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.navbar-wrapper.no_margins {
+  margin: 0px;
+  padding: 0px;
+}
+
+nav.navbar.navbar-inverse.navbar-static-top {
+  width:100vw;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}
+
+div.navbar-wrapper {
+  position:fixed;
+}
+
+ul.nav.navbar-nav {
+  float:right;
+
+  li#navbar_about {
+    margin-right:3em;
+  }
+}
+
+div.container.color_nav{
+  background-color:transparent;
+  height:80px;
+}
+
+.rounded_nav_pictures {
+  
+  border-radius: 1em;
+  width: 30px;
+  height:30px;
+  margin-top: .7em;
+  margin-right:1.25em;
+  background-repeat: no-repeat;
+  background-position: center;
+  &:hover {
+    border: 1px solid blue;
+  }
+  &.twitter {
+    background-image: url("twitter_logo.png");
+    background-size: 15px 12px; 
+  }
+  &.instagram {
+    background-image: url("instagram_logo.png");
+    background-size: 13px 13px;
+  }
+
+  &.github {
+    background-image: url("github_logo.png");
+    background-size: 15px 15px;
+  }
+  &.email {
+    background-image: url("email_logo.png");
+    margin-right:10px;
+    background-size: 15px 11px;
+    a {
+      padding:0px;
+    }
+  }
+}
+
+/*main content styling*/
+
+ul.user_options {
+  li {
+    display:inline-block;
+    margin-right: 30px;
+    float:right;
   }
 }
