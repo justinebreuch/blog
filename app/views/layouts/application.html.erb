@@ -16,7 +16,12 @@
     
 <!-- background_image -->
 <div>
-	<%= image_tag("background_20.jpg", class: "background") %>
+	<% if current_page?(root_path) %>
+		<%= image_tag("background_20.jpg", class: "background home") %>
+		<h3 id="wecome_message">hello. welcome, and please, stay a while.</h3>
+	<% else %>
+		<%= image_tag("background_10.jpg", class: "background new_post") %>
+	<% end %>
 </div>
 
 <!-- navigation bar --> 
@@ -43,6 +48,9 @@
 		                <% elsif current_page?(about_path) %>
 		                	<li><%= link_to 'blog', root_path %></li>
 		                	<li id="navbar_about" class="active"><%= link_to 'about', about_path %></li>
+		                <% else %>
+		                	<li><%= link_to 'blog', root_path %></li>
+		                	<li id="navbar_about"><%= link_to 'about', about_path %></li>
 		                <% end %>
 		                
 						
@@ -70,8 +78,8 @@
 	</div>
 
 <!-- main content --> 
-		
-	<div id="main_content">
+<% if current_page?(root_path) %>
+	<div class="main_content blog">
 			
 		<div id="header">
 			<ul class="user_options">
@@ -99,21 +107,57 @@
 		<div>
 		<% if current_page?(root_path) %> 
 				<p>all posts</p>
-			<% elsif current_page?(about_path) %>
+		<% elsif current_page?(about_path) %>
 				<p>about</p>
-			<% else %>
+		<% else %>
 				<%= link_to "back to all posts", root_path %>
 		<% end %>
 		</div>
 
 
 	
+
+<% elsif current_page?(new_post_path) %>
+	<div class="main_content new_post">
+			
+
+			<div id="header">
+				<ul class="user_options">
+				<% if user_signed_in? %>
+					<li>
+						<button class="btn .navbar-btn button" type="button">
+							<%= link_to "new post", new_post_path %>	
+						</button>
+					</li>
+					<li>
+						<button class="btn .navbar-btn button logout">
+							<%= link_to "log out", destroy_user_session_path, :method => :delete %>
+						</button>
+					</li>
+
+				<% end %>
+				
+				<% if !user_signed_in? %>
+					<li class="sign_in"><%=link_to "admin login", new_user_session_path %></li>
+				<% end %>
+				</ul>
+				<% if current_page?(root_path) %> 
+					<p>all posts</p>
+				<% elsif current_page?(about_path) %>
+					<p>about</p>
+				<% else %>
+					<%= link_to image_tag('back.png', width: '32px', height: '32px', class: 'back'), root_path %>
+				<% end %>
+		
+			</div>
+			
+<% end %>
+
 	<% flash.each do |name, msg| %>
 		<%= content_tag(:div, msg, class: "alert") %>
 	<% end %>
-
+<%= yield %>
 	
-	<%= yield %>
 	</div>
 
 
