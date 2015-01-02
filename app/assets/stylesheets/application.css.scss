@@ -3,7 +3,6 @@
 html, body {
   font-family: 'Helvetica Neue', sans-serif;
   font-weight:200;
-  padding-top: 4em;
 }
 
 @media (max-width: 979px) {
@@ -103,14 +102,34 @@ a {
 }
 
 #main_content {
+  float:left;
+  width: 100vw;
+  position: relative;
+  top:-75px;
   margin-left: 0px;
+  
   #header {
-    padding: 1em 3em;
-    border-bottom: 1px solid #d6dce0;
-    background: #f5f7f9;
+    
+    width:100vw;
+    padding-top:20px;
+    background-color: transparent;
     color: #9eafba;
+    display:inline-block;
+    
+    ul.user_options {
+      display:inline;
+      float:right;
+      li {
+        display:inline-block;
+        margin-right: 30px;
+        float:right;
+      }
+    }
     p {
       display: inline;
+      position:relative;
+      top:.5em;
+      left: 30px;
     }
     a {
       color: #9eafba;
@@ -145,6 +164,7 @@ a {
       margin: .5em 0 0 0;
     }
   }
+
   #post_content {
     padding: 1em 3em;
     .title {
@@ -280,6 +300,14 @@ a {
   }
 }
 
+/* background styling */
+.background{
+ width:100vw;
+ height:90vh;
+ min-height: 469px;
+ min-width: 1115px;
+}
+
 /* navbar styling */
 
 div.container.no_margins {
@@ -305,11 +333,25 @@ div.navbar-wrapper {
 
 ul.nav.navbar-nav {
   float:right;
+  
+  li {
+    a {
+      color:white;
+    }
+    #navbar_about {
+      margin-right:3em;
+    }
+    
+  }
+  
+}
 
-  li#navbar_about {
-    margin-right:3em;
+div.navbar-header {
+  a.navbar-brand {
+    color:white;
   }
 }
+
 
 div.container.color_nav{
   background-color:transparent;
@@ -326,7 +368,7 @@ div.container.color_nav{
   background-repeat: no-repeat;
   background-position: center;
   &:hover {
-    border: 1px solid blue;
+    border: 1px solid #9eafba;
   }
   &.twitter {
     background-image: url("twitter_logo.png");
@@ -353,10 +395,3 @@ div.container.color_nav{
 
 /*main content styling*/
 
-ul.user_options {
-  li {
-    display:inline-block;
-    margin-right: 30px;
-    float:right;
-  }
-}
