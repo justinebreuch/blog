@@ -6,15 +6,14 @@
 	<%= stylesheet_link_tag 'application', "http://fonts.googleapis.com/css?family=Raleway:400,700" %>
 	<%= stylesheet_link_tag 'bootstrap.min.css', "http://fonts.googleapis.com/css?family=Raleway:400,700" %>
 	<%= stylesheet_link_tag 'carousel.css', "http://fonts.googleapis.com/css?family=Raleway:400,700" %>
-
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" >
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'bootstrap.min.js'%>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" type="text/css" href="/css/carousel.css">
+ 
 </head>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    
 
 <!-- navigation bar --> 
 
@@ -45,11 +44,12 @@
 						<li class="rounded_nav_pictures github">
 							<%= link_to " ","https://github.com/justinebreuch" %>
 						</li>
-						<li class="rounded_nav_pictures email">
-							
-							<a href="mailto:justine.breuch@gmail.com">
-							</a>
+						<li class="rounded_nav_pictures email"> 
+							<%= mail_to "justine.breuch@gmail.com" do %>
+								 .
+							<% end %>
 						</li>
+						
 		              </ul>
 		            </div>
 		          </div>
@@ -62,10 +62,22 @@
 		
 	<div id="main_content">
 			
+		<div id="header">
+			<% if current_page?(root_path) %> 
+				<p>all posts</p>
+			<% elsif current_page?(about_path) %>
+				<p>about</p>
+			<% else %>
+				<%= link_to "back to all posts", root_path %>
+				<% end %>
+				
+		</div>
+
 		<ul class="user_options clearfix">
 			<% if user_signed_in? %>
 				<li>
-					<button class="btn .navbar-btn button" type="button"><%= link_to "new post", new_post_path %>	
+					<button class="btn .navbar-btn button" type="button">
+						<%= link_to "new post", new_post_path %>	
 					</button>
 				</li>
 				<li>
@@ -80,17 +92,9 @@
 				<li class="sign_in"><%=link_to "admin login", new_user_session_path %></li>
 			<% end %>
 		</ul>
-		<div id="header">
-			<% if current_page?(root_path) %> 
-				<p>all posts</p>
-			<% elsif current_page?(about_path) %>
-				<p>about</p>
-			<% else %>
-				<%= link_to "back to all posts", root_path %>
-				<% end %>
-				
-		</div>
 
+
+		
 
 	
 	<% flash.each do |name, msg| %>
