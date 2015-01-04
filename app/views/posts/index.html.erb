@@ -1,7 +1,5 @@
 
 <% @posts.each_with_index do |post, index| %>
-
-	<hr class="featurette-divider">
 	<% if (index + 1) % 2 == 0 %>
 	     <div class="row featurette">
 	        <div class="col-md-7">
@@ -9,13 +7,17 @@
 	          <p class="lead"><%= post.body %></p>
 	        </div>
 	        <div class="col-md-5">
-	          <%=image_tag("background_15.jpg", class: "featurette-image img-responsive", height: '500px', width: '500px') %>
+	        	<% if post.image.url != nil %>
+	          		<%=image_tag(post.image.url, class: "featurette-image img-responsive", height: '500px', width: '500px') %>
+	          	<% elsif post.image.url = nil %>
+	          		<%=image_tag('background_16.jpg', class: "featurette-image img-responsive", height: '500px', width: '500px') %>
+	          	<% end %>
 	        </div>
 	     </div>
 	 <% elsif (index+1) % 2 != 0 %>
 	 	<div class="row featurette">
         <div class="col-md-5">
-          <%=image_tag("background_16.jpg", class: "featurette-image img-responsive", height: '500px', width: '500px') %>
+          <%=image_tag(post.image.url, class: "featurette-image img-responsive", height: '500px', width: '500px') %>
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading"><%= link_to post.title, post %><br><span class="text-muted"><%= post.created_at.strftime("%B, %d, %Y") %></span></h2>

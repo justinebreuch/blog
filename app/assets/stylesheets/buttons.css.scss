@@ -1,0 +1,24 @@
+.btn {
+	font-size:1.1vw;
+}
+
+.button {
+  outline: none;
+  background: transparent;
+  border: 1px solid #9d9d9d;
+  padding: .5em 1.5em;
+  border-radius:.5em;
+  color: #9d9d9d;
+  &:hover {
+    border: 1px solid #33acb7;
+    color: #33acb7;
+    a {
+      color: #33acb7 !important;
+      text-decoration:none;
+    }
+  }
+  a {
+    color: #9d9d9d;
+  }
+  
+}

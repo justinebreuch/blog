@@ -17,6 +17,8 @@
 	<p class="body">
 		<%= @post.body %>
 	</p>
+	<p><%= image_tag(@post.image.url(:thumb)) %></p>
+	<p><%= @post.image_file_name %></p>
 
 	<div id="comments">
 		<h2>

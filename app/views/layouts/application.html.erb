@@ -15,13 +15,41 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     
 <!-- background_image -->
-<div class="background_image">
+<div class="background_image <% if current_page?(root_path) %>home<% elsif current_page?(new_post_path)%>new_post<% end %>">
 	<% if current_page?(root_path) %>
-		<%= image_tag("background_20.jpg", class: "background home") %>
 		<h3 id="welcome_message">hello. welcome, and please, stay a while.</h3>
-	<% else %>
-		<%= image_tag("background_10.jpg", class: "background new_post") %>
+	<% else  %>
+		<section class="post"> <%= image_tag(@post.image) %></section>
 	<% end %>
+	
+		<div id="header" class="<% if current_page?(new_post_path) %>new<% end %>">
+				<ul class="user_options">
+				<% if user_signed_in? %>
+					<% if current_page?(root_path) %>
+						<li>
+							<button class="btn navbar-btn button" type="button">
+								<%= link_to "new post", new_post_path %>	
+							</button>
+						</li>
+					<% end %>
+					<li>
+						<button class="btn navbar-btn button logout">
+							<%= link_to "log out", destroy_user_session_path, :method => :delete %>
+						</button>
+					</li>
+
+				<% end %>
+				
+				<% if !user_signed_in? %>
+					<li class="sign_in"><%=link_to "admin login", new_user_session_path %></li>
+				<% end %>
+				<% if current_page?(new_post_path) %>
+					<%= link_to image_tag('back.png', width: '32px', height: '32px', class: 'back'), root_path %>
+				<% end %>
+			</ul>
+					
+		</div>
+	
 </div>
 
 <!-- navigation bar --> 
@@ -80,76 +108,10 @@
 <!-- main content --> 
 <% if current_page?(root_path) %>
 	<div class="main_content blog">
-			
-		<div id="header">
-			<ul class="user_options">
-			<% if user_signed_in? %>
-				<li>
-					<button class="btn .navbar-btn button" type="button">
-						<%= link_to "new post", new_post_path %>	
-					</button>
-				</li>
-				<li>
-					<button class="btn .navbar-btn button logout">
-						<%= link_to "log out", destroy_user_session_path, :method => :delete %>
-					</button>
-				</li>
-
-			<% end %>
-			
-			<% if !user_signed_in? %>
-				<li class="sign_in"><%=link_to "admin login", new_user_session_path %></li>
-			<% end %>
-		</ul>
-				
-		</div>
-
-		<div>
-		<% if current_page?(root_path) %> 
-				<p>all posts</p>
-		<% elsif current_page?(about_path) %>
-				<p>about</p>
-		<% else %>
-				<%= link_to "back to all posts", root_path %>
-		<% end %>
-		</div>
-
-
-	
 
 <% elsif current_page?(new_post_path) %>
 	<div class="main_content new_post">
-			
-			<div id="header">
-				<ul class="user_options">
-				<% if user_signed_in? %>
-					<li>
-						<button class="btn .navbar-btn button" type="button">
-							<%= link_to "new post", new_post_path %>	
-						</button>
-					</li>
-					<li>
-						<button class="btn .navbar-btn button logout">
-							<%= link_to "log out", destroy_user_session_path, :method => :delete %>
-						</button>
-					</li>
-
-				<% end %>
-				
-				<% if !user_signed_in? %>
-					<li class="sign_in"><%=link_to "admin login", new_user_session_path %></li>
-				<% end %>
-				</ul>
-				<% if current_page?(root_path) %> 
-					<p>all posts</p>
-				<% elsif current_page?(about_path) %>
-					<p>about</p>
-				<% else %>
-					<%= link_to image_tag('back.png', width: '32px', height: '32px', class: 'back'), root_path %>
-				<% end %>
 		
-			</div>
-			
 <% end %>
 
 	<% flash.each do |name, msg| %>

@@ -1,39 +1,107 @@
-div.main_content.new_post div#page_wrapper h1 {
-	color: rgb(231, 180, 100);
+div#header.new {
+
+      margin-left:15px;
+      width:100vw;
+      background-color: transparent;
+      color: #9eafba;
+      display:inline-block;
+      position: absolute;
+      top: 5%;
+      height:50px;
+      z-index: 100;
+
+      ul.user_options {
+        display:inline;
+        float:right;
+        width:100%;
+        li {
+          display:inline-block;
+          margin-right: 30px;
+          float:right;
+        }
+
+      }
+
+      a img.back {
+          position: relative;
+          top: 5px;
+      }
 }
+
+
+  div.main_content.new_post {
+ 
+    float:left;
+    width: 100vw;
+    position: absolute;	
+    top:25%;
+    margin-left: 0px;
+
+    div#page_wrapper h1 {
+	color: rgb(231, 180, 100);
+	}
+	
+  }
+
+ 
 
 div#page_wrapper {
 	margin: 0 auto;
-	width:1000px;
+	width:60%;
 }
 
 form#new_post.new_post {
 	margin-top:20px;
-}
 
+	p {
+		/*input#post_title.text_field, &#body textarea#post_body.text_field {
+			border: none;
+			background-color: rgb(86, 86, 86);
+			opacity: .7;
+			width:100%;
 
-.text_field{
-	border: none;
-	background-color: rgb(86, 86, 86);
-	opacity: .7;
-}
+			min-height: 180px;
+		}*/
+		input.text_field, &#body textarea.text_field {
+			border: none;
+			background-color: rgb(86, 86, 86);
+			opacity: .7;
+			width:100%;
+			border-radius: .5em;
+			color:white;
+			padding:10px;
 
-.submit.btn.button {
-	margin-top:20px;
-	color:white;
-	border: 2px outset buttonface;
-	border-radius:.3em;
-}
+			
+		}
 
-.form_label {
-	color:#33acb7;
-	font-family: 'Helvetica Neue';
-	font-weight: 100;
-	letter-spacing: .1em;
-	font-size: 1.1em;
+		#post_title.text_field {
+				min-height: 40px;
+			}
+		#post_body.text_field {
+				min-height: 180px;
+		}
 
-}
-
-p#body {
-		margin-top:40px;
+		input.submit.button {
+			margin-top:20px;
+			border-radius:.3em;
+			background-color: transparent;
+		}
 	}
+
+	
+
+	&.form_label {
+		color:#33acb7;
+		font-family: 'Helvetica Neue';
+		font-weight: 100;
+		letter-spacing: .1em;
+		font-size: 1.1em;
+
+	}
+
+	p#body {
+			margin-top:40px;
+	}
+}
+
+
